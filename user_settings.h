@@ -25,10 +25,9 @@
 
 #ifndef H_USER_SETTINGS_
 #define H_USER_SETTINGS_
+#include <stdio.h>
 #include "fsl_debug_console.h"
 
-int32_t cust_rand_generate_block(uint8_t *rndb, uint32_t sz);
-#define CUSTOM_RAND_GENERATE_BLOCK cust_rand_generate_block
 
 
 /* System */
@@ -38,20 +37,21 @@ int32_t cust_rand_generate_block(uint8_t *rndb, uint32_t sz);
 #define SIZEOF_LONG_LONG 8
 #define BENCH_EMBEDDED
 #define NO_WOLFSSL_MEMORY
-#define DEBUG_WOLFSSL
 
-#define NO_RSA
+int32_t cust_rand_generate_block(uint8_t *rndb, uint32_t sz);
+#define CUSTOM_RAND_GENERATE_BLOCK cust_rand_generate_block
 
+#define NO_WOLFSSL_DIR 
+#define WOLFSSL_NO_CURRDIR
 
-//#   define HAVE_ED25519
-//#   define ED25519_SMALL
-//#   define WOLFSSL_SHA512
-//#   define USE_SLOW_SHA512
+#   define HAVE_ED25519
+#   define ED25519_SMALL
+#   define WOLFSSL_SHA512
 
-//#   define HAVE_ECC
-//#   define ECC_TIMING_RESISTANT
-//#   undef USE_FAST_MATH
-//#   define FP_MAX_BITS (256 + 32)
+#   define HAVE_ECC
+#   define ECC_TIMING_RESISTANT
+#   undef USE_FAST_MATH
+#define WOLFSSL_HAVE_SP_ECC
 
 
 
@@ -62,41 +62,35 @@ int32_t cust_rand_generate_block(uint8_t *rndb, uint32_t sz);
 #define WOLFSSL_SP_MATH
 #define WOLFSSL_SP_SMALL
 #define SP_WORD_SIZE 32
-//#define WOLFSSL_HAVE_SP_ECC
 
 /* Curve */
-//#   define HAVE_ECC256
-//#   define NO_ECC384
+#   define HAVE_ALL_CURVES
+#   define HAVE_ECC256
+#   define HAVE_ECC384
 
-//#  define HAVE_RSA
-//#  define RSA_LOW_MEM
-//#  define WOLFSSL_RSA_VERIFY_INLINE
-//#  define WOLFSSL_HAVE_SP_RSA
+#  define HAVE_RSA
+#  define RSA_LOW_MEM
+#  define WOLFSSL_HAVE_SP_RSA
 #  define WOLFSSL_SP
 #  define WOLFSSL_SP_SMALL
 #  define WOLFSSL_SP_MATH
 #  define SP_WORD_SIZE 32
-#  define WOLFSSL_SP_NO_3072
+#  define WC_RSA_BLINDING
 
-//# define WOLFSSL_SHA3
+# define WOLFSSL_SHA3
 
-//#  define HAVE_CHACHA
-//#  define HAVE_PWDBASED
+#  define HAVE_CHACHA
+#  define HAVE_PWDBASED
+#  define HAVE_AESGCM
+#  define HAVE_POLY1035
 
 /* Disables - For minimum wolfCrypt build */
-#define NO_AES
-#define NO_CMAC
-#define NO_HMAC
-#define NO_CODING
 #define WOLFSSL_NO_PEM
-#define NO_ASN_TIME
 #define NO_RC4
-#define NO_SHA
-#define NO_DH
 #define NO_DSA
 #define NO_MD4
+#define NO_DH
 #define NO_RABBIT
-#define NO_MD5
 #define NO_SIG_WRAPPER
 #define NO_CERT
 #define NO_SESSION_CACHE
