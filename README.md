@@ -22,5 +22,5 @@ Building wolfCrypt benchmark on i.MX RT1060-EVK
 10. Reset the board to start the benchmark and read the result on the terminal console
 
 
-Results are also available in the file [results.MD](results.MD)
+Results are also available in the file [results.md](results.md)
 
